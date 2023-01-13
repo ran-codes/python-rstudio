@@ -17,10 +17,16 @@ website:
         - text: 'Intro'
           href: index.qmd
         - text: "---"
-        - section: 'Get Started'
+        - section: 'Column Selection'
           contents:
-          - text: 'Column Selection'
-            href: manual/column-selection.qmd
+          - text: '1 By name'
+            href: manual/column-selection-name.qmd
+          - text: '2 Exclusions'
+            href: manual/column-selection-exclusion.qmd
+          - text: '3 Data Types'
+            href: manual/column-selection-types.qmd
+          - text: '4 Name Patterns'
+            href: manual/column-selection-patterns.qmd
 format:
   html:
     toc: true
@@ -28,6 +34,4 @@ format:
     code-copy: true
     code-overflow: wrap
     css: styles.css
-
-editor: visual
 

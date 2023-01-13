@@ -1,0 +1,79 @@
+---
+title: "Column Selection"
+subtitle: "Selecting columns with the `select` verb based on column type."
+format: 
+  html:
+    toc: true
+    df-print: kable
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r setup}
+#| echo: false
+library(reticulate)
+library(janitor)
+library(tidyverse)
+use_virtualenv("../../venv/")
+
+df = tibble(
+  color = c("blue","red","green"),
+  size = c("small", "large", "large"),
+  value_weight = c(3,8,9),
+  value_height = c(12, 45, 42)
+)
+```
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame(
+    {
+        "color": ["blue", "red", "green"],
+        "size": ["small", "large", "large"],
+        "value_weight": [3, 8, 9],
+        "value_height": [12, 45, 42],
+    }
+)
+```
+
+::: column-screen-inset-right
+
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% select_if(is.numeric)
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+df.select(pl.col(pl.Int64))
+```
+:::
+:::
+:::
+:::
+
+::: {.callout-caution collapse="true"}
+## API Links:
+
+-   [dplyr::select()](https://dplyr.tidyverse.org/reference/select.html)
+-   [dplyr selection helpers: contains() and others](https://tidyselect.r-lib.org/reference/starts_with.html)
+-   [polars.select](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.select.html)
+-   [polars.col](https://pola-rs.github.io/polars/py-polars/html/reference/expressions/api/polars.col.html#polars-col)
+:::
