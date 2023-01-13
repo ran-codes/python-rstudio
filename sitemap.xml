@@ -2,10 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ran-codes.github.io/python-rstudio/index.html</loc>
-    <lastmod>2023-01-13T17:43:51.074Z</lastmod>
+    <lastmod>2023-01-13T21:10:45.567Z</lastmod>
   </url>
   <url>
-    <loc>https://ran-codes.github.io/python-rstudio/manual/column-selection.html</loc>
-    <lastmod>2023-01-13T17:43:58.819Z</lastmod>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/column-selection-exclusion.html</loc>
+    <lastmod>2023-01-13T21:10:52.516Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/column-selection-name.html</loc>
+    <lastmod>2023-01-13T21:10:58.975Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/column-selection-patterns.html</loc>
+    <lastmod>2023-01-13T21:11:05.323Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/column-selection-types.html</loc>
+    <lastmod>2023-01-13T21:11:11.628Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/descriptives-count.html</loc>
+    <lastmod>2023-01-13T21:11:18.155Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/descriptives-describe.html</loc>
+    <lastmod>2023-01-13T21:11:24.874Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/descriptives-glimpse.html</loc>
+    <lastmod>2023-01-13T21:11:31.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/row-selection-filter-multiple.html</loc>
+    <lastmod>2023-01-13T21:11:38.202Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ran-codes.github.io/python-rstudio/manual/row-selection-filter.html</loc>
+    <lastmod>2023-01-13T21:11:45.125Z</lastmod>
   </url>
 </urlset>

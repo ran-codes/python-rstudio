@@ -7,17 +7,66 @@
     "text": "Dplyr and Polars are both packages to work with data frames. They both provide high level functions to do common data manipulation tasks. This manual will give examples of common data wrangling use cases coded in both packages in hopes of building a more bulti-lingual data science culture.\nThis resource aims to give R native folks a reference when working in Python and vice versa!\n\n\n\n\n\n\nWhy Polars?\n\n\n\nPandas is a popular Python library to work with dataframes. However, I recommend to use the Polars python package for a few reasons:\n\nPolars syntax feels more functional and is very similiar to dplyr syntax. For example here is a column selection in Polars df.select('col1')\nPandas is more low level programming and feels more like base R. For example here is a column selection in Pandas df['col1']\nPolars is more performant than Pandas with large datasets"
   },
   {
-    "objectID": "manual/column-selection.html#basic-column-selection",
-    "href": "manual/column-selection.html#basic-column-selection",
-    "title": "Column Selection",
-    "section": "Basic column selection",
-    "text": "Basic column selection\nThese examples just show how to select based on colum names.\n\n\n\n\n\n\n\n\nTidyverse\n\n\n\n\ndf %>% \n  select(name, type_1) %>% \n  head()\n\n\n\n\n\nname\ntype_1\n\n\n\n\nBulbasaur\nGrass\n\n\nIvysaur\nGrass\n\n\nVenusaur\nGrass\n\n\nVenusaurMega Venusaur\nGrass\n\n\nCharmander\nFire\n\n\nCharmeleon\nFire\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolars\n\n\n\n\n(df\n  .select(['name','type_1'])\n  .head())\n\n\n\n\nshape: (5, 2)\n\n\n\n\nname\n\n\ntype_1\n\n\n\n\nstr\n\n\nstr\n\n\n\n\n\n\n\"Bulbasaur\"\n\n\n\"Grass\"\n\n\n\n\n\"Ivysaur\"\n\n\n\"Grass\"\n\n\n\n\n\"Venusaur\"\n\n\n\"Grass\"\n\n\n\n\n\"VenusaurMega V...\n\n\n\"Grass\"\n\n\n\n\n\"Charmander\"\n\n\n\"Fire\""
+    "objectID": "manual/column-selection-exclusion.html",
+    "href": "manual/column-selection-exclusion.html",
+    "title": "Column Selection by Exclusion",
+    "section": "",
+    "text": "Tidyverse\n\n\n\n\ndf %>% select(-size)\n\n\n\n\n\ncolor\nvalue_weight\nvalue_height\n\n\n\n\nblue\n3\n12\n\n\nred\n8\n45\n\n\ngreen\n9\n42\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolars\n\n\n\n\ndf.select(pl.all().exclude(\"size\"))\n\n\n\n\nshape: (3, 3)\n\n\n\n\ncolor\n\n\nvalue_weight\n\n\nvalue_height\n\n\n\n\nstr\n\n\ni64\n\n\ni64\n\n\n\n\n\n\n\"blue\"\n\n\n3\n\n\n12\n\n\n\n\n\"red\"\n\n\n8\n\n\n45\n\n\n\n\n\"green\"\n\n\n9\n\n\n42\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Links:\n\n\n\n\n\n\ndplyr::select()\ndplyr selection helpers: contains() and others\npolars.select\npolars.col"
   },
   {
-    "objectID": "manual/column-selection.html#advanced-columns-selection",
-    "href": "manual/column-selection.html#advanced-columns-selection",
+    "objectID": "manual/column-selection-name.html",
+    "href": "manual/column-selection-name.html",
     "title": "Column Selection",
-    "section": "Advanced columns selection",
-    "text": "Advanced columns selection\nThese examples just show how to select based on colum names.\n\n\n\n\n\n\n\n\nTidyverse\n\n\n\n\ndf %>% select(name, type_1) %>% head()\n\n\n\n\n\nname\ntype_1\n\n\n\n\nBulbasaur\nGrass\n\n\nIvysaur\nGrass\n\n\nVenusaur\nGrass\n\n\nVenusaurMega Venusaur\nGrass\n\n\nCharmander\nFire\n\n\nCharmeleon\nFire\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolars\n\n\n\n\ndf.select(['name','type_1']).head()\n\n\n\n\nshape: (5, 2)\n\n\n\n\nname\n\n\ntype_1\n\n\n\n\nstr\n\n\nstr\n\n\n\n\n\n\n\"Bulbasaur\"\n\n\n\"Grass\"\n\n\n\n\n\"Ivysaur\"\n\n\n\"Grass\"\n\n\n\n\n\"Venusaur\"\n\n\n\"Grass\"\n\n\n\n\n\"VenusaurMega V...\n\n\n\"Grass\"\n\n\n\n\n\"Charmander\"\n\n\n\"Fire\""
+    "section": "",
+    "text": "Tidyverse\n\n\n\n\ndf %>% select(color, size) \n\n\n\n\n\ncolor\nsize\n\n\n\n\nblue\nsmall\n\n\nred\nlarge\n\n\ngreen\nlarge\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolars\n\n\n\n\ndf.select(['color','size'])\n\n\n\n\nshape: (3, 2)\n\n\n\n\ncolor\n\n\nsize\n\n\n\n\nstr\n\n\nstr\n\n\n\n\n\n\n\"blue\"\n\n\n\"small\"\n\n\n\n\n\"red\"\n\n\n\"large\"\n\n\n\n\n\"green\"\n\n\n\"large\"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Links:\n\n\n\n\n\n\ndplyr::select()\ndplyr selection helpers: contains() and others\npolars.select\npolars.col"
+  },
+  {
+    "objectID": "manual/column-selection-patterns.html",
+    "href": "manual/column-selection-patterns.html",
+    "title": "Column Selection",
+    "section": "",
+    "text": "Tidyverse\n\n\n\n\ndf %>% select(contains('value'))\n\n\n\n\n\nvalue_weight\nvalue_height\n\n\n\n\n3\n12\n\n\n8\n45\n\n\n9\n42\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolars\n\n\n\n\ndf.select(pl.col(\"^*value.*$\"))\n\n\n\n\nshape: (3, 2)\n\n\n\n\nvalue_weight\n\n\nvalue_height\n\n\n\n\ni64\n\n\ni64\n\n\n\n\n\n\n3\n\n\n12\n\n\n\n\n8\n\n\n45\n\n\n\n\n9\n\n\n42\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Links:\n\n\n\n\n\n\ndplyr::select()\ndplyr selection helpers: contains() and others\npolars.select\npolars.col"
+  },
+  {
+    "objectID": "manual/column-selection-types.html",
+    "href": "manual/column-selection-types.html",
+    "title": "Column Selection",
+    "section": "",
+    "text": "Tidyverse\n\n\n\n\ndf %>% select_if(is.numeric)\n\n\n\n\n\nvalue_weight\nvalue_height\n\n\n\n\n3\n12\n\n\n8\n45\n\n\n9\n42\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPolars\n\n\n\n\ndf.select(pl.col(pl.Int64))\n\n\n\n\nshape: (3, 2)\n\n\n\n\nvalue_weight\n\n\nvalue_height\n\n\n\n\ni64\n\n\ni64\n\n\n\n\n\n\n3\n\n\n12\n\n\n\n\n8\n\n\n45\n\n\n\n\n9\n\n\n42\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAPI Links:\n\n\n\n\n\n\ndplyr::select()\ndplyr selection helpers: contains() and others\npolars.select\npolars.col"
+  },
+  {
+    "objectID": "manual/descriptives-count.html#api-links",
+    "href": "manual/descriptives-count.html#api-links",
+    "title": "Descriptives with the count verb",
+    "section": "API Links:",
+    "text": "API Links:\n\ndplyr::count()\npolars.groupby.count"
+  },
+  {
+    "objectID": "manual/descriptives-describe.html#api-links",
+    "href": "manual/descriptives-describe.html#api-links",
+    "title": "Summarize a dataframe with skim aka describe",
+    "section": "API Links:",
+    "text": "API Links:\n\nskimr::skim()\npolars.describe"
+  },
+  {
+    "objectID": "manual/descriptives-glimpse.html#api-links",
+    "href": "manual/descriptives-glimpse.html#api-links",
+    "title": "Descriptives with the glimpse verb",
+    "section": "API Links:",
+    "text": "API Links:\n\ndplyr::glimpse()\npolars.filter"
+  },
+  {
+    "objectID": "manual/row-selection-filter-multiple.html#api-links",
+    "href": "manual/row-selection-filter-multiple.html#api-links",
+    "title": "Row Selection with filter",
+    "section": "API Links:",
+    "text": "API Links:\n\ndplyr::filter()\npolars.filter"
+  },
+  {
+    "objectID": "manual/row-selection-filter.html#api-links",
+    "href": "manual/row-selection-filter.html#api-links",
+    "title": "Row Selection with filter verb",
+    "section": "API Links:",
+    "text": "API Links:\n\ndplyr::filter()\npolars.filter"
   }
 ]
