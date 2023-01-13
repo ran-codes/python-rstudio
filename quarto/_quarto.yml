@@ -17,16 +17,39 @@ website:
         - text: 'Intro'
           href: index.qmd
         - text: "---"
-        - section: 'Column Selection'
+        - section: 'Descriptives'
           contents:
-          - text: '1 By name'
-            href: manual/column-selection-name.qmd
-          - text: '2 Exclusions'
-            href: manual/column-selection-exclusion.qmd
-          - text: '3 Data Types'
-            href: manual/column-selection-types.qmd
-          - text: '4 Name Patterns'
-            href: manual/column-selection-patterns.qmd
+            - text: 'Glimpse'
+              href: manual/descriptives-glimpse.qmd
+            - text: 'Count'
+              href: manual/descriptives-count.qmd
+            - text: 'Skim/Describe'
+              href: manual/descriptives-describe.qmd
+        - section: 'Selection'
+          contents:
+          - section: 'Column Selection'
+            contents:
+            - text: '1 By name'
+              href: manual/column-selection-name.qmd
+            - text: '2 Exclusions'
+              href: manual/column-selection-exclusion.qmd
+            - text: '3 Data Types'
+              href: manual/column-selection-types.qmd
+            - text: '4 Name Patterns'
+              href: manual/column-selection-patterns.qmd
+          - section: 'Row Selection'
+            contents:
+            - text: '5 Filter'
+              href: manual/row-selection-filter.qmd
+            - text: '6 Multiple conditions'
+              href: manual/row-selection-filter-multiple.qmd
+          - section: 'Examples'
+            contents:
+            - text: '7 Pokemon'
+              href: manual/selection-example-pokemon.qmd
+            - text: '8 Census Data'
+              href: manual/selection-example-census.qmd
+              
 format:
   html:
     toc: true

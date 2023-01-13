@@ -1,0 +1,74 @@
+---
+title: "Descriptives with the `count` verb"
+subtitle: "The `count` very allows you quick count unique values of one or more variables."
+format: 
+  html:
+    toc: true
+    df-print: kable
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r setup}
+#| echo: false
+library(reticulate)
+library(janitor)
+library(tidyverse)
+use_virtualenv("../../venv/")
+
+df = tibble(
+  color = c("blue","red","green"),
+  size = c("small", "large", "large"),
+  value_weight = c(3,8,9),
+  value_height = c(12, 45, 42)
+)
+```
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame(
+    {
+        "color": ["blue", "red", "green"],
+        "size": ["small", "large", "large"],
+        "value_weight": [3, 8, 9],
+        "value_height": [12, 45, 42],
+    }
+)
+```
+
+::: column-screen-inset-right
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% add_count(size)
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+df.groupby("size").count()
+```
+:::
+:::
+:::
+:::
+
+## API Links:
+
+-   [dplyr::count()](https://dplyr.tidyverse.org/reference/count.html)
+-   [polars.groupby.count](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.internals.dataframe.groupby.GroupBy.count.html#polars.internals.dataframe.groupby.GroupBy.count)

@@ -1,0 +1,74 @@
+---
+title: "Descriptives with the `glimpse` verb"
+subtitle: "Get a `glimpse` of your data that includes every data frame and data type."
+format: 
+  html:
+    toc: true
+    df-print: kable
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r setup}
+#| echo: false
+library(reticulate)
+library(janitor)
+library(tidyverse)
+use_virtualenv("../../venv/")
+
+df = tibble(
+  color = c("blue","red","green"),
+  size = c("small", "large", "large"),
+  value_weight = c(3,8,9),
+  value_height = c(12, 45, 42)
+)
+```
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame(
+    {
+        "color": ["blue", "red", "green"],
+        "size": ["small", "large", "large"],
+        "value_weight": [3, 8, 9],
+        "value_height": [12, 45, 42],
+    }
+)
+```
+
+::: column-screen-inset-right
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% glimpse()
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+print(df.glimpse())
+```
+:::
+:::
+:::
+:::
+
+## API Links:
+
+-   [dplyr::glimpse()](https://dplyr.tidyverse.org/reference/glimpse.html)
+-   [polars.filter](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.glimpse.html)

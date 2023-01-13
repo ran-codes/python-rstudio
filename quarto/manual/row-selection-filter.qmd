@@ -1,0 +1,77 @@
+---
+title: "Row Selection with `filter` verb"
+subtitle: "We can select rows by using the `filter` verb. In the `filter` verb we pass the condition we are using to select the rows."
+format: 
+  html:
+    toc: true
+    df-print: kable
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r setup}
+#| echo: false
+library(reticulate)
+library(janitor)
+library(tidyverse)
+use_virtualenv("../../venv/")
+
+df = tibble(
+  color = c("blue","red","green"),
+  size = c("small", "large", "large"),
+  value_weight = c(3,8,9),
+  value_height = c(12, 45, 42)
+)
+```
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame(
+    {
+        "color": ["blue", "red", "green"],
+        "size": ["small", "large", "large"],
+        "value_weight": [3, 8, 9],
+        "value_height": [12, 45, 42],
+    }
+)
+```
+
+::: column-screen-inset-right
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% filter(value_weight > 3)
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+df.filter(pl.col("value_weight") > 3)
+```
+:::
+:::
+:::
+::: 
+
+## API Links:
+
+-   [dplyr::filter()](https://dplyr.tidyverse.org/reference/filter.html)
+-   [polars.filter](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html)
+ 
+
+

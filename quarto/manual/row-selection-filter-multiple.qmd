@@ -1,0 +1,80 @@
+---
+title: "Row Selection with `filter`  "
+subtitle: "We can use multiple conditions while using `filter`."
+format: 
+  html:
+    toc: true
+    df-print: kable
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r setup}
+#| echo: false
+library(reticulate)
+library(janitor)
+library(tidyverse)
+use_virtualenv("../../venv/")
+
+df = tibble(
+  color = c("blue","red","green"),
+  size = c("small", "large", "large"),
+  value_weight = c(3,8,9),
+  value_height = c(12, 45, 42)
+)
+```
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame(
+    {
+        "color": ["blue", "red", "green"],
+        "size": ["small", "large", "large"],
+        "value_weight": [3, 8, 9],
+        "value_height": [12, 45, 42],
+    }
+)
+```
+
+::: column-screen-inset-right
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% 
+  filter(
+    value_weight > 3,
+    value_height > 43)
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+(df
+  .filter( 
+    (pl.col("value_weight") > 3) & 
+    (pl.col("value_height") > 43)) )
+```
+:::
+:::
+:::
+:::
+
+## API Links:
+
+-   [dplyr::filter()](https://dplyr.tidyverse.org/reference/filter.html)
+-   [polars.filter](https://pola-rs.github.io/polars/py-polars/html/reference/dataframe/api/polars.DataFrame.filter.html)
