@@ -2,9 +2,9 @@ project:
   type: website
 
 website:
-  title: "R and Python cheats"
+  title: "Grammar of Data Manipulation"
   navbar:
-    logo: logo.jpg
+    logo: logo.png
     right:
       - icon: github
         href: https://github.com/
@@ -24,7 +24,7 @@ website:
 format:
   html:
     toc: true
-    theme: simplex
+    theme: minty
     code-copy: true
     code-overflow: wrap
     css: styles.css
