@@ -16,6 +16,11 @@ website:
       contents:
         - text: 'Intro'
           href: index.qmd
+        - text: "---"
+        - section: 'Get Started'
+          contents:
+          - text: 'Column Selection'
+            href: manual/column-selection.qmd
 format:
   html:
     toc: true

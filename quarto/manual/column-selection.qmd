@@ -1,0 +1,96 @@
+---
+title: "Column Selection"
+format: 
+  html:
+    toc: true
+    df-print: kable
+    self-contained: true
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r setup}
+#| echo: false
+library(reticulate)
+library(janitor)
+library(tidyverse)
+use_virtualenv("../../venv/")
+
+df = read_csv( "https://gist.githubusercontent.com/ritchie46/cac6b337ea52281aa23c049250a4ff03/raw/89a957ff3919d90e6ef2d34235e6bf22304f3366/pokemon.csv") %>% 
+  clean_names()
+df_py = r_to_py(df)
+```
+
+```{python}
+#| echo: false
+import pandas as pd
+import polars as pl
+
+df = pl.DataFrame(data = r.df)
+```
+
+::: column-screen-inset-right
+## Basic column selection
+
+These examples just show how to select based on colum names.
+
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% 
+  select(name, type_1) %>% 
+  head()
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+(df
+  .select(['name','type_1'])
+  .head())
+```
+:::
+:::
+:::
+
+## Advanced columns selection
+
+These examples just show how to select based on colum names.
+
+::: columns
+::: {.column width="49%"}
+::: callout-note
+## Tidyverse
+
+```{r}
+df %>% select(name, type_1) %>% head()
+```
+:::
+:::
+
+::: {.column width="2%"}
+:::
+
+::: {.column width="49%"}
+::: callout-tip
+## Polars
+
+```{python}
+df.select(['name','type_1']).head()
+```
+:::
+:::
+:::
+:::
