@@ -48,7 +48,7 @@ df = pl.DataFrame(
 ## Tidyverse
 
 ```{r}
-df %>% add_count(size)
+df %>% count(size)
 ```
 :::
 :::
