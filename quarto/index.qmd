@@ -1,12 +1,20 @@
 ---
-title: "quarto"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: "R and Python Data Manipulations cheatsheet"
+author: Ran Li
 ---
+
+Dplyr and Polars are both packages to work with data frames. They both provide high level functions to do common data manipulation tasks. This manual will give examples of common data wrangling use cases coded in both packages in hopes of building a more bulti-lingual data science culture. 
+
+**This resource aims to give R native folks a reference when working in Python and vice versa!**
+
+
+::: callout-note
+## Why Polars?
+
+Pandas is a popular Python library to work with dataframes. However, I recommend to use the Polars python package for a few reasons:
+
+- Polars syntax feels more **functional** and is very similiar to **dplyr** syntax. For example here is a column selection in Polars `df.select('col1')`
+- Pandas is more low level programming and feels more like base R. For example here is a column selection in Pandas `df['col1']`
+- Polars is more performant than Pandas with large datasets
+ 
+:::

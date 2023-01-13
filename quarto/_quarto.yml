@@ -2,17 +2,26 @@ project:
   type: website
 
 website:
-  title: "quarto"
+  title: "R and Python cheats"
   navbar:
+    logo: logo.jpg
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/
       - icon: twitter
         href: https://twitter.com
+        
+  sidebar:
+    - id: manual
+      contents:
+        - text: 'Intro'
+          href: index.qmd
 format:
   html:
-    theme: cosmo
+    toc: true
+    theme: simplex
+    code-copy: true
+    code-overflow: wrap
     css: styles.css
 
 editor: visual
